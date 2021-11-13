@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  /* margin:0; */
+}
+
+body {
+  /*entire screen - can't scroll down, this is awesome*/
+  height: 100vh; 
+  margin: 0;
+  font-family: Helvetica;
+  display: grid;
+  /* mobile first - single column */
+  grid-template-columns: 1fr;
+  grid-template-rows: 20px 40px auto 40px 40px;
+  grid-template-areas:
+    "hdr"
+    "ftr"
+    "content"
+    "rightside"
+    "leftside";
+}
+
+header {
+  grid-area: hdr;
+  background-color: #ff9e7a;
+}
+
+footer {
+  grid-area: ftr;
+  background-color: #b1fcc8;
+}
+
+asideright {
+  grid-area: rightside;
+  background-color: #ffe07a;
+}
+
+asideleft {
+  grid-area: leftside;
+  background-color: violet;
+}
+
+main {
+  grid-area: content;
+  background-color: #bf9df7;
+}
+
+header, footer, asideright, asideleft, main {
+  /*this is centering the words on both axes*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 768px is a common "breakpoint" width for tablets */
+/*Anything larger than 768px body will change*/
+@media only screen and (min-width: 768px) {
+  body {
+    /* tablet - two column display */
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 50px auto 30px;
+    grid-template-areas:
+      "hdr hdr hdr"
+      "rightside content leftside"
+      "ftr ftr ftr";
+  }
+    main {
+    background: red;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 20px auto 20px 30px;
+    grid-template-areas: 
+      "hdr hdr hdr"
+      "leftside  content  rightside"
+      "ftr ftr ftr";
+  }
+  main {
+    background: blue;
+  }
+}
